@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
+import axios from 'axios';
+import MovieCard from './MovieCard';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -22,25 +22,29 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Hero = () => {
   const classes = useStyles();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/discover/movie?api_key=0e7564ceeff28c9e5bc077e81ea7fe00&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false',
+      )
+      .then((res) => {
+        setData(res.data.results);
+      });
+  }, []);
 
   return (
     <Container className={classes.cardGrid} maxWidth='md'>
       <Grid container spacing={4}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image='https://source.unsplash.com/random'
-                title='Image title'
-              />
-            </Card>
-          </Grid>
-        ))}
+        {data &&
+          data.map((card) => (
+            <Grid item key={card} xs={12} sm={6} md={4}>
+              <MovieCard data={card} />
+            </Grid>
+          ))}
       </Grid>
     </Container>
   );
