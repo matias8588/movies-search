@@ -17,6 +17,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "import/prefer-default-export": 0
   }
 }

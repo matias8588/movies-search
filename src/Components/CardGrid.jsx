@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 import MovieCard from './MovieCard';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,16 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Hero = () => {
   const classes = useStyles();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/discover/movie?api_key=0e7564ceeff28c9e5bc077e81ea7fe00&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false',
-      )
-      .then((res) => {
-        setData(res.data.results);
-      });
-  }, []);
+  const data = useSelector((state) => state.data.results);
 
   return (
     <Container className={classes.cardGrid} maxWidth='md'>
