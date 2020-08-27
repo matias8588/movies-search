@@ -3,7 +3,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
-import { Modal } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -25,17 +25,17 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieCard = ({ data }) => {
   const classes = useStyles();
-
-  console.log(data);
-
+  const history = useHistory();
   return (
-    <Card className={classes.card}>
+    <Card
+      className={classes.card}
+      onClick={() => history.push('/movieDetail', data)}
+    >
       <CardMedia
         className={classes.cardMedia}
         image={`https://image.tmdb.org/t/p/original${data.poster_path}`}
         title={data.title}
       />
-      <Modal />
     </Card>
   );
 };

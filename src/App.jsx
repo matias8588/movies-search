@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Hero from './Components/Hero';
-import CardGrid from './Components/CardGrid';
 import Footer from './Components/Footer';
 import { movies } from './redux/actions';
+import Main from './Views/Main';
+import MovieDetail from './Views/MovieDetail';
+import NotFound from './Views/NotFound';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,13 +24,16 @@ const App = () => {
 
   return (
     <>
-      <CssBaseline />
-      <Navbar />
-      <main>
-        <Hero />
-        <CardGrid />
-      </main>
-      <Footer />
+      <Router>
+        <CssBaseline />
+        <Navbar />
+        <Switch>
+          <Route exact path='/' component={Main} />
+          <Route exact path='/movieDetail' component={MovieDetail} />
+          <Route exact path='*' component={NotFound} />
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 };

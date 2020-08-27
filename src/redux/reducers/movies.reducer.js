@@ -2,9 +2,9 @@ import { movies } from '../constants';
 
 const initialState = {};
 
-export const setData = (state = initialState, action) => {
+export const data = (state = initialState, action) => {
   switch (action.type) {
-    case movies.SET_setDaTA:
+    case movies.SET_DATA:
       return { ...state, ...action.data };
 
     default:
@@ -12,4 +12,4 @@ export const setData = (state = initialState, action) => {
   }
 };
 
-export default setData;
+export default data;

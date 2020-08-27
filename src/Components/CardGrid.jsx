@@ -32,8 +32,8 @@ const Hero = () => {
       <Grid container spacing={4}>
         {data &&
           data.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <MovieCard data={card} />
+            <Grid item key={card.id} xs={12} sm={6} md={4}>
+              <MovieCard key={card.id} data={card} />
             </Grid>
           ))}
       </Grid>
