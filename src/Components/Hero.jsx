@@ -10,7 +10,6 @@ import {
   Divider,
 } from '@material-ui/core';
 import { SearchIcon, CancelIcon } from '@material-ui/icons';
-
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import ReactStars from 'react-stars';
