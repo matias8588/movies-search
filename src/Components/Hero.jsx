@@ -9,7 +9,8 @@ import {
   IconButton,
   Divider,
 } from '@material-ui/core';
-import { SearchIcon, CancelIcon } from '@material-ui/icons';
+import SearchIcon from '@material-ui/icons/Search';
+import CancelIcon from '@material-ui/icons/Cancel';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import ReactStars from 'react-stars';
