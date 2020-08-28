@@ -49,7 +49,6 @@ const MovieDetail = ({ location }) => {
   const data = location.state;
   const history = useHistory();
   const [movieData, setMovieData] = useState();
-  console.log(movieData);
   useEffect(() => {
     axios
       .get(

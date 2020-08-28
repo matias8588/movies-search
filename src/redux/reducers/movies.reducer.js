@@ -2,7 +2,7 @@ import { movies } from '../constants';
 
 const initialState = {};
 
-export const data = (state = initialState, action) => {
+export const hero = (state = initialState, action) => {
   switch (action.type) {
     case movies.SET_DATA:
       return { ...state, ...action.data };
@@ -12,4 +12,4 @@ export const data = (state = initialState, action) => {
   }
 };
 
-export default data;
+export default hero;
