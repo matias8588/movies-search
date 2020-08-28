@@ -1,6 +1,10 @@
 # React movie search project
 
-#PREREQUISITES
+## Live demo
+
+Check the live demo [here](https://react-search-movie.herokuapp.com)!
+
+## PREREQUISITES
 
 Install dependencies using
 
@@ -10,7 +14,7 @@ yarn
 
 Set your .env as .env.example
 
-#RUNNING THE APP
+## RUNNING THE APP
 
 ```
 yarn start
