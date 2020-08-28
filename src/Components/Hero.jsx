@@ -15,7 +15,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import ReactStars from 'react-stars';
 import clsx from 'clsx';
-import { hero } from '../redux/actions';
+import { hero, setFilter } from '../redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -91,15 +91,16 @@ const Hero = () => {
 
   const handleCleanStars = () => {
     setDisableFilters({ ...disableFilters, input: false });
+    dispatch(setFilter.setFilter(0));
     setStarsSelected(0);
   };
 
   const ratingChanged = (newRating) => {
     setStarsSelected(newRating);
+    dispatch(hero.displayHero(true));
+    dispatch(setFilter.setFilter(newRating));
     setDisableFilters({ ...disableFilters, input: true });
   };
-
-  console.log(disableFilters);
 
   return (
     <div className={classes.heroContent}>

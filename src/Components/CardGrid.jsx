@@ -27,19 +27,31 @@ const Hero = () => {
   const classes = useStyles();
   const data = useSelector((state) => state.data.results);
   const searchData = useSelector((state) => state.hero.data.results);
-
   const display = useSelector((state) => state.hero.display);
+  const filterValue = useSelector((state) => state.setFilter.value);
+
+  const filterData = (card) => {
+    const duplicatedFilterValue = filterValue * 2;
+    if (filterValue > 0 && card.vote_average < duplicatedFilterValue) {
+      return (
+        <Grid item key={card.id} xs={12} sm={6} md={4}>
+          <MovieCard key={card.id} data={card} />
+        </Grid>
+      );
+    }
+    if (filterValue === 0) {
+      return (
+        <Grid item key={card.id} xs={12} sm={6} md={4}>
+          <MovieCard key={card.id} data={card} />
+        </Grid>
+      );
+    }
+    return null;
+  };
 
   const heroDisplay = () => {
     if (display) {
-      return (
-        data &&
-        data.map((card) => (
-          <Grid item key={card.id} xs={12} sm={6} md={4}>
-            <MovieCard key={card.id} data={card} />
-          </Grid>
-        ))
-      );
+      return data && data.map((card) => filterData(card));
     }
     return (
       searchData &&
@@ -51,7 +63,6 @@ const Hero = () => {
     );
   };
 
-  console.log(display);
   return (
     <Container className={classes.cardGrid} maxWidth='md'>
       <Grid container spacing={4}>
