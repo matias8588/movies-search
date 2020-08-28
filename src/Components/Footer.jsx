@@ -17,20 +17,6 @@ const Navbar = () => {
       <Typography variant='h6' align='center' gutterBottom>
         Matías Cejas
       </Typography>
-      <Typography
-        variant='subtitle1'
-        align='center'
-        color='textSecondary'
-        component='p'
-      >
-        <a href='http://matiascejas.com.ar/'>
-          Visit my website{' '}
-          <span role='img' aria-label='emoji'>
-            {' '}
-            🙂
-          </span>
-        </a>
-      </Typography>
     </footer>
   );
 };

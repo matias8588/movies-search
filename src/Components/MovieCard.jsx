@@ -14,9 +14,11 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    cursor: 'pointer',
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
+    height: 540,
   },
   cardContent: {
     flexGrow: 1,
@@ -29,6 +31,7 @@ const MovieCard = ({ data }) => {
   return (
     <Card
       className={classes.card}
+      boxShadow={3}
       onClick={() => history.push('/movieDetail', data)}
     >
       <CardMedia

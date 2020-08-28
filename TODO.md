@@ -1,0 +1,2 @@
+- Persist search value after open detail window
+- Validate errors in input search

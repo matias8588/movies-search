@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import { Container, Grid, Typography } from '@material-ui/core/Container';
 import { useSelector } from 'react-redux';
 import MovieCard from './MovieCard';
 
@@ -27,6 +26,7 @@ const Hero = () => {
   const classes = useStyles();
   const data = useSelector((state) => state.data.results);
   const searchData = useSelector((state) => state.hero.data.results);
+  const searchValue = useSelector((state) => state.hero.value);
   const display = useSelector((state) => state.hero.display);
   const filterValue = useSelector((state) => state.setFilter.value);
 
@@ -65,6 +65,17 @@ const Hero = () => {
 
   return (
     <Container className={classes.cardGrid} maxWidth='md'>
+      <Typography
+        component='h3'
+        variant='h4'
+        align='center'
+        color='textPrimary'
+        gutterBottom
+      >
+        {display
+          ? 'Discover new movies'
+          : `Searching movies with the word: "${searchValue}"`}
+      </Typography>
       <Grid container spacing={4}>
         {heroDisplay()}
       </Grid>

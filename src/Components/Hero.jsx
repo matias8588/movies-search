@@ -9,8 +9,8 @@ import {
   IconButton,
   Divider,
 } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import CancelIcon from '@material-ui/icons/Cancel';
+import { SearchIcon, CancelIcon } from '@material-ui/icons';
+
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import ReactStars from 'react-stars';
@@ -70,11 +70,12 @@ const Hero = () => {
     e.preventDefault();
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=0e7564ceeff28c9e5bc077e81ea7fe00&language=en-US&query=${inputValue}&include_adult=false`,
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${inputValue}&include_adult=false`,
       )
       .then((res) => {
         dispatch(hero.setHero(res.data));
         dispatch(hero.displayHero(false));
+        dispatch(hero.searchValue(inputValue));
       });
   };
   const handleInput = (event) => {
