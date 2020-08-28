@@ -13,7 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { hero, movies } from '../redux/actions';
+import { hero } from '../redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -57,7 +57,7 @@ const Hero = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=0e7564ceeff28c9e5bc077e81ea7fe00&language=en-US&query=${inputValue}&include_adult=false`,
       )
       .then((res) => {
-        dispatch(movies.setData(res.data));
+        dispatch(hero.setHero(res.data));
         dispatch(hero.displayHero(false));
       });
   };

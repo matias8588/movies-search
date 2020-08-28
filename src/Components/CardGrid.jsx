@@ -26,16 +26,36 @@ const useStyles = makeStyles((theme) => ({
 const Hero = () => {
   const classes = useStyles();
   const data = useSelector((state) => state.data.results);
+  const searchData = useSelector((state) => state.hero.data.results);
 
+  const display = useSelector((state) => state.hero.display);
+
+  const heroDisplay = () => {
+    if (display) {
+      return (
+        data &&
+        data.map((card) => (
+          <Grid item key={card.id} xs={12} sm={6} md={4}>
+            <MovieCard key={card.id} data={card} />
+          </Grid>
+        ))
+      );
+    }
+    return (
+      searchData &&
+      searchData.map((card) => (
+        <Grid item key={card.id} xs={12} sm={6} md={4}>
+          <MovieCard key={card.id} data={card} />
+        </Grid>
+      ))
+    );
+  };
+
+  console.log(display);
   return (
     <Container className={classes.cardGrid} maxWidth='md'>
       <Grid container spacing={4}>
-        {data &&
-          data.map((card) => (
-            <Grid item key={card.id} xs={12} sm={6} md={4}>
-              <MovieCard key={card.id} data={card} />
-            </Grid>
-          ))}
+        {heroDisplay()}
       </Grid>
     </Container>
   );
